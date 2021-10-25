@@ -1,0 +1,29 @@
+name: "pact-create-tag-action"
+description: "Creates a tag on the specified version"
+branding:
+  icon: "bookmark"
+  color: "green"
+inputs:
+  pacticipant:
+    description: "the pacticipant for whose pact, a tag is created."
+    required: true
+  pact_broker_url:
+    description: "The url of your pact broker"
+    required: true
+  pact_broker_username:
+    description: "Your pact broker username"
+    required: true
+  pact_broker_password:
+     description: "Your pact broker password"
+    required: true
+  version:
+    description: "Version to tag"
+    required: true
+  tag:
+    description: "Tag to create"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - run: ${{ github.action_path }}/createTag.sh
+      shell: bash
